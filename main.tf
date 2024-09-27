@@ -53,19 +53,8 @@ resource "aws_key_pair" "deployer" {
   public_key = var.public_key
 }
 
-data "aws_ami" "amazon-linux-2" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-}
-
-
 resource "aws_instance" "my_server" {
-  ami                    = data.aws_ami.amazon-linux-2.id
+  ami                    = "ami-0ebfd941bbafe70c6"
   instance_type          = var.instance_type
   key_name               = aws_key_pair.deployer.key_name
   vpc_security_group_ids = [aws_security_group.sg_my_server.id]
