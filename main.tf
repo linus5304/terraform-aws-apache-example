@@ -56,15 +56,13 @@ resource "aws_key_pair" "deployer" {
 data "aws_ami" "amazon-linux-2" {
   most_recent = true
   owners      = ["amazon"]
+
   filter {
-    name   = "owner-alias"
-    values = ["amazon"]
-  }
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm*"]
+    name   = "virtualization-type"
+    values = ["hvm"]
   }
 }
+
 
 resource "aws_instance" "my_server" {
   ami                    = data.aws_ami.amazon-linux-2.id
