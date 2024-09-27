@@ -80,9 +80,10 @@ resource "aws_instance" "my_server" {
     destination = "/home/ec2-user/bacoon.txt"
 
     connection {
-      type        = "ssh"
-      user        = "ec2-user"
-      private_key = file("/Users/linusbayere/.ssh/terraform")
+      type = "ssh"
+      user = "ec2-user"
+      # private_key = file("/Users/linusbayere/.ssh/terraform")
+      private_key = var.private_key
       host        = self.public_ip
     }
   }

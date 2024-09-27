@@ -20,3 +20,9 @@ variable "server_name" {
   type    = string
   default = "Apache Server"
 }
+
+variable "private_key" {
+  type        = string
+  description = "This is a private key"
+  sensitive   = true
+}

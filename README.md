@@ -15,6 +15,7 @@ module "apache" {
   public_key      = "ssh-rsa AAAAB...."
   instance_type   = "t2.micro"
   server_name     = "Apache Example Server"
+  private_key     = "private_key"
 }
 
 output "public_ip" {
